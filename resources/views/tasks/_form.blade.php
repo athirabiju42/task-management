@@ -57,16 +57,15 @@
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
             <label for="due_date" class="block text-sm font-medium text-slate-700">Due Date</label>
-            <input id="due_date" name="due_date" type="date"
-                class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:border-sky-500 focus:ring-sky-500"
-                value="{{ old('due_date', isset($task) && $task->due_date ? $task->due_date->format('Y-m-d') : '') }}">
-            <x-input-error :messages="$errors->get('due_date')" class="mt-2" />
+           <input id="due_date" name="due_date" type="date"
+    class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-800 bg-white focus:border-sky-500 focus:ring-sky-500"
+    value="{{ old('due_date', isset($task) && $task->due_date ? $task->due_date->format('Y-m-d') : '') }}">
         </div>
 
         @if (auth()->user()->isAdmin())
             <div>
                 <label for="assigned_to" class="block text-sm font-medium text-slate-700">Assign To</label>
-                <select id="assigned_to" name="assigned_to" class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:border-sky-500 focus:ring-sky-500">
+                <select id="assigned_to" name="assigned_to" class="mt-1 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-800 bg-white focus:border-sky-500 focus:ring-sky-500">
                     <option value="">Unassigned</option>
                     @foreach ($users as $user)
                         <option value="{{ $user->id }}" @selected(old('assigned_to', $task->assigned_to ?? '') == $user->id)>{{ $user->name }}</option>
